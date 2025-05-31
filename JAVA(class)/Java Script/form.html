@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Methods Example</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="mainTitle">Welcome to the DOM Methods Demo</h1>
+    <p class="info">This is a paragraph with class "info".</p>
+    <p class="info">Another paragraph with class "info".</p>
+    <p>This is a paragraph without any class.</p>
+    <button id="changeTitle">Change Title</button>
+    <button id="highlightInfo">Highlight Info</button>
+    <button id="listParagraphs">List Paragraphs</button>
+    <button id="changeFirstP">Change First Paragraph</button>
+    <button id="selectAll">Select All</button>
+
+    <script>
+        // Method 1: getElementById
+        document.getElementById('changeTitle').addEventListener('click', function() {
+            const title = document.getElementById('mainTitle');
+            title.textContent = 'DOM Methods are Fun!';
+        });
+
+        // Method 2: getElementsByClassName
+        document.getElementById('highlightInfo').addEventListener('click', function() {
+            const infoElements = document.getElementsByClassName('info');
+            for (let i = 0; i < infoElements.length; i++) {
+                infoElements[i].classList.toggle('highlight');
+            }
+        });
+
+        // Method 3: getElementsByTagName
+        document.getElementById('listParagraphs').addEventListener('click', function() {
+            const paragraphs = document.getElementsByTagName('p');
+            console.log('List of all paragraph elements:');
+            for (let i = 0; i < paragraphs.length; i++) {
+                console.log(paragraphs[i].textContent);
+            }
+        });
+
+        // Method 4: querySelector
+        document.getElementById('changeFirstP').addEventListener('click', function() {
+            const firstParagraph = document.querySelector('p');
+            firstParagraph.textContent = 'This is the first paragraph and it has been changed!';
+        });
+
+        // Method 5: querySelectorAll
+        document.getElementById('selectAll').addEventListener('click', function() {
+            const allElements = document.querySelectorAll('body *');
+            console.log('List of all elements in the body:');
+            allElements.forEach(element => {
+                console.log(element.tagName);
+            });
+        });
+    </script>
+</body>
+</html>
